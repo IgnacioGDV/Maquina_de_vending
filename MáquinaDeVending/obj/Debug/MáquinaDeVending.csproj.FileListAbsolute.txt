@@ -1,0 +1,7 @@
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\bin\Debug\MáquinaDeVending.exe.config
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\bin\Debug\MáquinaDeVending.exe
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\bin\Debug\MáquinaDeVending.pdb
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\obj\Debug\MáquinaDeVending.csproj.AssemblyReference.cache
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\obj\Debug\MáquinaDeVending.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\obj\Debug\MáquinaDeVending.exe
+C:\Users\Ignacio\Desktop\Informática\2º Informática\2o cuatrimestre\POO V2\MáquinaDeVending\MáquinaDeVending\obj\Debug\MáquinaDeVending.pdb
