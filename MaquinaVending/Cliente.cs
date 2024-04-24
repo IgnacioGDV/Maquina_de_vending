@@ -29,7 +29,6 @@ namespace MáquinaDeVending
                     switch (opcion)
                     {
                         case 1:
-                            Máquina.MostrarInfoProductos();
                             Máquina.ComprarProductos();
                             break;
                         case 2:
