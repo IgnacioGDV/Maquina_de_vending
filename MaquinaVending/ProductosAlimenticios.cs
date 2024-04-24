@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MáquinaDeVending
 {
-    public class ProductosAlimenticios : Producto
+    public class ProductosAlimenticios : Producto // Hereda de la clase Producto
     {
         public string InfoNutricional { get; set; }
         public ProductosAlimenticios() { }
