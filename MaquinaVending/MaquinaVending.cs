@@ -300,7 +300,53 @@ namespace MáquinaDeVending
         
                                 break;
                             case 2:
-                                // Falta hacer el pago con tarjeta
+                                Tarjeta tarjeta = new Tarjeta();
+                                Console.WriteLine("Introduzca los datos de la tarjeta:");
+                                Console.Write("Número de tarjeta (16 dígitos): ");
+                                tarjeta.Número = Console.ReadLine().Replace(" ", "");
+                                if (tarjeta.Número.Length != 16)
+                                {
+                                    tarjeta.ArgumentoNoValido = true;
+                                    Console.WriteLine("---No has introducido 16 dígitos--- ");
+                                }
+                                Console.Write("Fecha de caducidad (MM/YY): ");
+                                tarjeta.FechaCaducidad = Console.ReadLine();
+                                string[] partesFecha = tarjeta.FechaCaducidad.Split('/');
+                                if (partesFecha.Length == 2)
+                                {
+                                    int mes = int.Parse(partesFecha[0]);
+                                    int año = int.Parse(partesFecha[1]);
+                                
+                                    if (mes <= 1 || mes >= 12)
+                                    {
+                                        tarjeta.ArgumentoNoValido = true;
+                                        Console.WriteLine("--- Mes introducido inválido ---");
+                                    }
+                                    if (año < 24 || año > 99)
+                                    {
+                                        tarjeta.ArgumentoNoValido = true;
+                                        Console.WriteLine("--- Año introducido inválido ---");
+                                    }
+                                }
+                                else
+                                {
+                                    tarjeta.ArgumentoNoValido = true;
+                                    Console.WriteLine("--- Formato de fecha de caducidad inválido ---");
+                                }
+                                Console.Write("Código de seguridad: ");
+                                tarjeta.CódigoSeguridad = Console.ReadLine();
+                                Console.WriteLine("Procesando pago con tarjeta...");
+                                if (tarjeta.ArgumentoNoValido != true)
+                                {
+                                    productoTemp.Unidades = productoTemp.Unidades - 1;
+                                    Console.WriteLine("--- Producto comprado correctamente ---");
+                                    Console.WriteLine("Sacando producto...");
+                                    Console.WriteLine("Pulse para continuar...");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("--- Imposible comprar el producto, debe escribir argumentos válidos  ---");
+                                }
                                 break;
                             case 3:
                                 Console.WriteLine("Cancelando operación, pulse para continuar...");
