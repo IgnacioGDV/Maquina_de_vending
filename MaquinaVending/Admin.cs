@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MáquinaDeVending
 {
-    public class Admin : Usuario
+    public class Admin : Usuario // Hereda de la clase Usuario
     {
         public Admin(List<Producto> productos) : base(productos) { }
         public Admin(int Id, string Apodo, string Nombre, string Ape1, string Ape2, string Contraseña, List<Producto> productos) : base(Id, Apodo, Nombre, Ape1, Ape2, Contraseña, productos)
