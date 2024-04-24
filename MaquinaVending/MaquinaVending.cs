@@ -571,7 +571,57 @@ namespace MáquinaDeVending
 
         public void CargaCompletaProductos()
         {
-
+            Console.Write("Introduzca el nombre (con extensión) del fichero de productos a leer: ");
+            string fichero = Console.ReadLine();
+            try
+            {
+                if (File.Exists(fichero))
+                {
+                    StreamReader sr = new StreamReader(fichero);
+                    string linea;
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        string[] datos = linea.Split(';');
+                        if (ListaProductos.Count < 12)
+                        {
+                            if (datos[0] == "1")
+                            {
+                                MaterialesPreciosos matPrecioso = new MaterialesPreciosos(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")),2), datos[4], datos[5], double.Parse(datos[6].Replace("g", "")));
+                                ListaProductos.Add(matPrecioso);
+                                Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
+                            }
+                            if (datos[0] == "2")
+                            {
+                                // Implementar productos alimenticios
+                            }
+                            if (datos[0] == "3")
+                            {
+                                // Implementar productos electrónicos
+                            }
+                        }
+                        else
+                        {
+                            if (datos[0] == "1" || datos[0] == "2" || datos[0] == "3")
+                            {
+                                Console.WriteLine("Imposible añadir el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero + " debido a que ya hay 12 productos en la máquina");
+                            }
+                        }
+                    }
+                    sr.Close();
+                }
+                else
+                {
+                    Console.WriteLine("No se encuentra el archivo de productos " + fichero);
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error de E/S: " + ex.Message);
+            }
         }
     }
 }
