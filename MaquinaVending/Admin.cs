@@ -12,7 +12,7 @@ namespace MáquinaDeVending
         public Admin(int Id, string Apodo, string Nombre, string Ape1, string Ape2, string Contraseña, List<Producto> productos) : base(Id, Apodo, Nombre, Ape1, Ape2, Contraseña, productos)
         {
         }
-        public override void Menu()
+        public override void Menu() // Menú del administrador
         {
             MaquinaVending Máquina = new MaquinaVending(ListaProductos);
             int opcion = 0;
