@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MáquinaDeVending
 {
-    public class MaterialesPreciosos : Producto
+    public class MaterialesPreciosos : Producto // Hereda de la clase Producto
     {
         public string TipoMaterial { get; set; }
         public double Peso { get; set; }
@@ -38,7 +38,7 @@ namespace MáquinaDeVending
             Console.WriteLine("Tipo de material: ");
             this.TipoMaterial = Console.ReadLine();
             Console.WriteLine("Peso(gramos): ");
-            this.Peso = int.Parse(Console.ReadLine().Replace("g", ""));
+            this.Peso = int.Parse(Console.ReadLine().Replace("g", "")); // .Replace para controlar que el usuario, si escribe g, se reemplace por ""
         }
     }
 }
