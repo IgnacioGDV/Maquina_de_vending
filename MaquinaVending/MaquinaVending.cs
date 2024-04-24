@@ -312,7 +312,7 @@ namespace MáquinaDeVending
                                     int mes = int.Parse(partesFecha[0]);
                                     int año = int.Parse(partesFecha[1]);
                                 
-                                    if (mes <= 1 || mes >= 12)
+                                    if (mes < 1 || mes > 12)
                                     {
                                         tarjeta.ArgumentoNoValido = true;
                                         Console.WriteLine("--- Mes introducido inválido ---");
