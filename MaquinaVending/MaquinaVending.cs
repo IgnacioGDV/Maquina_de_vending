@@ -14,8 +14,6 @@ namespace MáquinaDeVending
         {
             this.ListaProductos = productos;
         }
-        
-
         public double CalcularVuelta(double saldoIntroducido, double saldoaIntroducir, double cambio)
         {
             if (saldoaIntroducir > saldoIntroducido)
@@ -381,7 +379,7 @@ namespace MáquinaDeVending
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine("El producto que ha intentado comprar no dispone de existencias");
+                        Console.WriteLine("El producto que ha intentado comprar no dispone de existencias o no existe");
                         Console.WriteLine("¿Desea salir? (si/no): ");
                         string opcionsalir = Console.ReadLine().ToLower();
                         switch (opcionsalir)
@@ -592,11 +590,49 @@ namespace MáquinaDeVending
                             }
                             if (datos[0] == "2")
                             {
-                                // Implementar productos alimenticios
+                                ProductosAlimenticios prodAlimenticio = new ProductosAlimenticios(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")), 2), datos[4], datos[7]);
+                                ListaProductos.Add(prodAlimenticio);
+                                Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
                             }
                             if (datos[0] == "3")
                             {
-                                // Implementar productos electrónicos
+                                bool InclusiónPilas;
+                                bool Precargado;
+                                if (datos[8] == "1")
+                                {
+                                    InclusiónPilas = true;
+                                }
+                                else
+                                {
+                                    InclusiónPilas = false;
+                                }
+                                
+                                if (datos[9] == "1")
+                                {
+                                    Precargado = true;
+                                }
+                                else
+                                {
+                                    Precargado = false;
+                                }
+                                ProductosElectrónicos prodElectrónico = new ProductosElectrónicos(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")), 2), datos[4], datos[6], InclusiónPilas, Precargado);
+                                if (datos[8] != "0" && datos[8] != "1")
+                                {
+                                    prodElectrónico.ArgumentoNoValido = true;
+                                }
+                                if (datos[9] != "0" && datos[9] != "1")
+                                {
+                                    prodElectrónico.ArgumentoNoValido = true;
+                                }
+                                if (prodElectrónico.ArgumentoNoValido != true)
+                                {
+                                    ListaProductos.Add(prodElectrónico);
+                                    Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("--- Imposible añadir el producto electrónico con nombre " + datos[1] + ", no hay argumentos válidos  ---");
+                                }
                             }
                         }
                         else
