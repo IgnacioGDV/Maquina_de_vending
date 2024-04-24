@@ -12,7 +12,6 @@ namespace MáquinaDeVending
         public bool InclusiónPilas { get; set; }
         public bool Precargado { get; set; }
         public bool ArgumentoNoValido { get; set; }
-
         public ProductosElectrónicos() { }
         public ProductosElectrónicos(int Id, string Nombre, int Unidades, double PrecioUnitario, string Descripción, string TipoMaterialesUtilizados, bool InclusiónPilas, bool Precargado) : base(Id, Nombre, Unidades, PrecioUnitario, Descripción)
         {
