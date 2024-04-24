@@ -36,7 +36,7 @@ namespace MáquinaDeVending
             Console.WriteLine("1. Comprar productos");
             Console.WriteLine("2. Mostrar información de producto");
         }
-        public bool Login(string Apodo, string Contraseña)
+        public bool Login(string Apodo, string Contraseña) // Validar encontrar el usuario
         {
             return this.Apodo == Apodo && this.Contraseña == Contraseña;
         }
