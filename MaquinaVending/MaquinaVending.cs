@@ -432,7 +432,7 @@ namespace MáquinaDeVending
             }
             else
             {
-                Console.WriteLine("\n---No se ha encontrado ningún contenido con el ID introducido---");
+                Console.WriteLine("\n---No se ha encontrado ningún producto con el ID introducido---");
             }
         }
         public Producto BuscarProducto(int Id)
