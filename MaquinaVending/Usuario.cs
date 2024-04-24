@@ -32,7 +32,6 @@ namespace MáquinaDeVending
 
         public virtual void Menu()
         {
-            Console.Clear();
             Console.WriteLine("1. Comprar productos");
             Console.WriteLine("2. Mostrar información de producto");
         }
