@@ -20,6 +20,10 @@ namespace MáquinaDeVending
             int opcion = 0;
             do
             {
+                Console.Clear();
+                Console.WriteLine("  ------------- ");
+                Console.WriteLine(" |   CLIENTE   | ");
+                Console.WriteLine("  ------------- ");
                 base.Menu();
                 Console.WriteLine("3. Salir");
                 Console.Write("Elige una opción: ");
