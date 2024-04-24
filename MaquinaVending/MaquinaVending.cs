@@ -518,7 +518,6 @@ namespace MáquinaDeVending
                                         {
                                             Console.WriteLine("--- Imposible añadir el producto electrónico, debe escribir argumentos válidos  ---");
                                         }
-
                                         break;
                                     case 4:
                                         Console.WriteLine("Volviendo al menú principal...");
@@ -546,6 +545,7 @@ namespace MáquinaDeVending
                         }
                         break;
                     default:
+                        Console.WriteLine("Error: Opción inválida. Por favor, Ingrese un número válido.");
                         break;
                 }
             }
