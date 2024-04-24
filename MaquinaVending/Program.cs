@@ -88,28 +88,34 @@ namespace MáquinaDeVending
             Console.Clear();
             Console.WriteLine("--- NUEVO CLIENTE ---");
             Console.Write("Nombre de usuario: ");
-            string Apodo = Console.ReadLine();
+            string Apodo = Console.ReadLine().Trim(); // Trim para eliminar espacios al inicio y al final
             Console.Write("Nombre: ");
-            string Nombre = Console.ReadLine();
+            string Nombre = Console.ReadLine().Trim();
             Console.Write("Primer apellido: ");
-            string Ape1 = Console.ReadLine();
+            string Ape1 = Console.ReadLine().Trim();
             Console.Write("Segundo apellido: ");
-            string Ape2 = Console.ReadLine();
+            string Ape2 = Console.ReadLine().Trim();
             Console.Write("Contraseña: ");
-            string Contraseña = Console.ReadLine();
+            string Contraseña = Console.ReadLine().Trim();
 
-            Usuario usuarioExistente = listaUsuarios.Find(usuario => usuario.Apodo == Apodo);
-            if (usuarioExistente != null)
+            if (Apodo != "" && Nombre != "" && Ape1 != "" && Ape2 != "" && Contraseña != "") 
             {
-                Console.WriteLine("El nombre de usuario ya está en uso. Por favor, elige otro.");
-                Console.ReadKey();
-                return;
+                Usuario usuarioExistente = listaUsuarios.Find(usuario => usuario.Apodo == Apodo);
+                if (usuarioExistente != null)
+                {
+                    Console.WriteLine("El nombre de usuario ya está en uso. Por favor, elige otro.");
+                    Console.ReadKey();
+                    return;
+                }
+                Cliente nuevoUsuario = new Cliente(listaUsuarios.Count, Apodo, Nombre, Ape1, Ape2, Contraseña, ListaProductos);
+                listaUsuarios.Add(nuevoUsuario);
+                Console.WriteLine("Cliente añadido correctamente.");
             }
-
-            Cliente nuevoUsuario = new Cliente(listaUsuarios.Count, Apodo, Nombre, Ape1, Ape2, Contraseña, ListaProductos);
-            listaUsuarios.Add(nuevoUsuario);
-            Console.WriteLine("Cliente añadido correctamente.");
-            Console.ReadKey();
+            else
+            {
+                Console.WriteLine("ERROR: Debes ingresar al menos un carácter en cada respuesta y no puedes dejar espacios en blanco");
+            }
+            Console.ReadKey();        
         }
     }
 }
