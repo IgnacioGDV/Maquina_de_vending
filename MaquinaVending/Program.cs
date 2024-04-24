@@ -15,7 +15,7 @@ namespace MáquinaDeVending
         {
             ListaProductos = new List<Producto>();
             listaUsuarios = new List<Usuario>();
-            Admin admin = new Admin(0, "admin", "Admin", "Admin", "Admin", "admin", ListaProductos);
+            Admin admin = new Admin(0, "admin", "Admin", "Admin", "Admin", "admin", ListaProductos); // Añadir lo primero el usuario administrador a la lista de usuarios
             listaUsuarios.Add(admin);
             int opcion = 0;
             do
@@ -61,7 +61,7 @@ namespace MáquinaDeVending
 
             } while (opcion != 3);
         }
-        public static void Login()
+        public static void Login() // Iniciar sesión con usuario
         {
             Console.Clear();
             Console.Write("Nombre de usuario: ");
@@ -83,7 +83,7 @@ namespace MáquinaDeVending
                 Console.ReadKey();
             }
         }
-        public static void AddUsuario()
+        public static void AddUsuario() // Añadir usuario a la lista de usuarios
         {
             Console.Clear();
             Console.WriteLine("--- NUEVO CLIENTE ---");
