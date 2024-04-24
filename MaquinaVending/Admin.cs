@@ -30,7 +30,6 @@ namespace MáquinaDeVending
                     switch (opcion)
                     {
                         case 1:
-                            Máquina.MostrarInfoProductos();
                             Máquina.ComprarProductos();
                             break;
                         case 2:
@@ -61,7 +60,8 @@ namespace MáquinaDeVending
                             Console.ReadKey();
                             break;
                         case 4:
-
+                            Máquina.CargaCompletaProductos();
+                            Console.ReadKey();
                             break;
                         case 5:
                             Console.WriteLine("Saliendo...");
