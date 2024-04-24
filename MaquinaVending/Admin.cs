@@ -75,10 +75,13 @@ namespace MáquinaDeVending
                 catch (FormatException)
                 {
                     Console.WriteLine("Error: Opción inválida. Por favor, Ingrese un número válido.");
+                    Console.ReadKey();
+
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
+                    Console.ReadKey();
                 }
             } while (opcion != 5);
         }
