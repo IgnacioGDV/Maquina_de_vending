@@ -43,7 +43,7 @@ namespace MáquinaDeVending
             Console.WriteLine("Nombre: ");
             this.Nombre = Console.ReadLine();
             Console.WriteLine("Precio: ");
-            this.PrecioUnitario = Math.Round(float.Parse(Console.ReadLine().Replace(".", ",")), 2);
+            this.PrecioUnitario = Math.Round(float.Parse(Console.ReadLine().Replace(".", ",")), 2); // Math.Round para redondear el precio a 2 decimales en caso de haber más y .Replace para controlar que el precio se pueda escribir tanto con "." como con ","
             Console.WriteLine("Descripción: ");
             this.Descripción = Console.ReadLine();
             Console.WriteLine("Unidades: ");
