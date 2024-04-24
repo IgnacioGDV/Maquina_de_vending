@@ -14,7 +14,7 @@ namespace MáquinaDeVending
         public bool ArgumentoNoValido { get; set; }
         public Tarjeta()
         {
-            this.ArgumentoNoValido = false;
+            this.ArgumentoNoValido = false; // Para validar que todos los argumentos introducidos son válidos
         }
     }
 }
