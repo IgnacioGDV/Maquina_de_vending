@@ -27,12 +27,10 @@ namespace MáquinaDeVending
                 return cambio;
             }
         }
-
         public void ComprarProductos()
         {
             bool salir = false;
             bool salir2 = false;
-        
             do
             {
                 Console.Clear();
@@ -295,7 +293,6 @@ namespace MáquinaDeVending
                                         Console.ReadKey();
                                     }
                                 } while (saldoaIntroducir <= saldoIntroducido || salir2 != true);
-        
                                 break;
                             case 2:
                                 Tarjeta tarjeta = new Tarjeta();
@@ -353,7 +350,6 @@ namespace MáquinaDeVending
                                 Console.WriteLine("Opción inválida, pulse para continuar...");
                                 break;
                         }
-        
                         Console.ReadKey();
                         if (salir != true)
                         {
@@ -415,8 +411,6 @@ namespace MáquinaDeVending
                 }
             } while (salir != true);
         }
-            
-
         public void MostrarInfoProductos()
         {
             Console.Clear();
@@ -441,8 +435,6 @@ namespace MáquinaDeVending
                 Console.WriteLine("\n---No se ha encontrado ningún contenido con el ID introducido---");
             }
         }
-
-
         public Producto BuscarProducto(int Id)
         {
             Producto productoTemp = null;
@@ -566,7 +558,6 @@ namespace MáquinaDeVending
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
-
         public void CargaCompletaProductos()
         {
             Console.Write("Introduzca el nombre (con extensión) del fichero de productos a leer: ");
@@ -606,7 +597,6 @@ namespace MáquinaDeVending
                                 {
                                     InclusiónPilas = false;
                                 }
-                                
                                 if (datos[9] == "1")
                                 {
                                     Precargado = true;
