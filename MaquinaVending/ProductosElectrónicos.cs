@@ -14,9 +14,9 @@ namespace MáquinaDeVending
         public bool ArgumentoNoValido { get; set; }
 
         public ProductosElectrónicos() { }
-        public ProductosElectrónicos(int Id, string Nombre, int Unidades, double PrecioUnitario, string Descripción, string TipoMaterialesUtilizdos, bool InclusiónPilas, bool Precargado) : base(Id, Nombre, Unidades, PrecioUnitario, Descripción)
+        public ProductosElectrónicos(int Id, string Nombre, int Unidades, double PrecioUnitario, string Descripción, string TipoMaterialesUtilizados, bool InclusiónPilas, bool Precargado) : base(Id, Nombre, Unidades, PrecioUnitario, Descripción)
         {
-            this.TipoMaterialesUtilizados = TipoMaterialesUtilizdos;
+            this.TipoMaterialesUtilizados = TipoMaterialesUtilizados;
             this.InclusiónPilas = InclusiónPilas;
             this.Precargado = Precargado;
         }
