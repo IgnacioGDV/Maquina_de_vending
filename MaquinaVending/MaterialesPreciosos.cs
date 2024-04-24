@@ -25,7 +25,7 @@ namespace MáquinaDeVending
         public override void MostrarInfoCompleta()
         {
             base.MostrarInfoCompleta();
-            Console.WriteLine("\n\tTipo de producto: Material precioso" + "\n\tTipo de material: " + this.TipoMaterial + "\n\tPeso: " + this.Peso + " gramos");
+            Console.WriteLine("\n\tTipo de producto: Material precioso" + "\n\tTipo de material: " + this.TipoMaterial + "\n\tPeso: " + this.Peso + " g");
         }
         public override void SolicitarInfo()
         {
@@ -38,8 +38,7 @@ namespace MáquinaDeVending
             Console.WriteLine("Tipo de material: ");
             this.TipoMaterial = Console.ReadLine();
             Console.WriteLine("Peso(gramos): ");
-            this.Peso = int.Parse(Console.ReadLine());
+            this.Peso = int.Parse(Console.ReadLine().Replace("g", ""));
         }
-
     }
 }
