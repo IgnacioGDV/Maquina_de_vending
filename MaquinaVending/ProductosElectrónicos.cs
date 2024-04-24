@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MáquinaDeVending
 {
-    public class ProductosElectrónicos : Producto
+    public class ProductosElectrónicos : Producto // Hereda de la clase Producto
     {
         public string TipoMaterialesUtilizados { get; set; }
         public bool InclusiónPilas { get; set; }
@@ -25,7 +25,7 @@ namespace MáquinaDeVending
         {
             base.MostrarInfoCompleta();
             Console.Write("\n\tTipo de producto: Producto Electrónico" + "\n\tTipo de materiales utilizados: " + this.TipoMaterialesUtilizados);
-            if (this.InclusiónPilas != true)
+            if (this.InclusiónPilas != true) // Mostrar si incluye pilas
             {
                 Console.Write("\n\tIncluye pilas: No");
             }
@@ -33,7 +33,7 @@ namespace MáquinaDeVending
             {
                 Console.Write("\n\tIncluye pilas: Si");
             }
-            if (this.Precargado != true)
+            if (this.Precargado != true) // Mostrar si viene precargado
             {
                 Console.WriteLine("\n\tProducto precargado: No");
             }
@@ -57,7 +57,7 @@ namespace MáquinaDeVending
             Console.WriteLine("¿Incluye pilas?(si/no): ");
             try
             {
-                opcionPilas = Console.ReadLine().ToLower();
+                opcionPilas = Console.ReadLine().ToLower(); //ToLower para que convierta a minúsculas en caso de mayúsculas
                 switch (opcionPilas)
                 {
                     case "si":
@@ -67,7 +67,7 @@ namespace MáquinaDeVending
                         this.InclusiónPilas = false;
                         break;
                     default:
-                        ArgumentoNoValido = true;
+                        ArgumentoNoValido = true; // para controlar que se introduzcan argumentos válidos
                         Console.WriteLine("---Debe introducir un argumento válido(si/no)---\n");
                         break;
                 }
@@ -87,7 +87,7 @@ namespace MáquinaDeVending
             Console.WriteLine("¿Viene precargado?(si/no): ");
             try
             {
-                opcionPrecargado = Console.ReadLine().ToLower();
+                opcionPrecargado = Console.ReadLine().ToLower();  //ToLower para que convierta a minúsculas en caso de mayúsculas
                 switch (opcionPrecargado)
                 {
                     case "si":
@@ -97,7 +97,7 @@ namespace MáquinaDeVending
                         this.Precargado = false;
                         break;
                     default:
-                        ArgumentoNoValido = true;
+                        ArgumentoNoValido = true; // para controlar que se introduzcan argumentos válidos
                         Console.WriteLine("---Debe introducir un argumento válido(si/no)---\n");
                         break;
                 }
