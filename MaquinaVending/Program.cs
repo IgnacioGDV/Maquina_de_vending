@@ -21,9 +21,13 @@ namespace MáquinaDeVending
             do
             {
                 Console.Clear();
-                Console.WriteLine("1. Login");
-                Console.WriteLine("2. Registrarse");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("  ------------------------ ");
+                Console.WriteLine(" |   MÁQUINA DE VENDING   | ");
+                Console.WriteLine("  ------------------------ ");
+                Console.WriteLine(" |     1. Login           |");
+                Console.WriteLine(" |     2. Registrarse     |");
+                Console.WriteLine(" |     3. Salir           |");
+                Console.WriteLine("  ------------------------ ");
                 Console.Write("Elige una opción: ");
                 try
                 {
