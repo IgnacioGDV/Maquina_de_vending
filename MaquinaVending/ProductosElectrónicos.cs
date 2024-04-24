@@ -14,12 +14,11 @@ namespace MáquinaDeVending
         public bool ArgumentoNoValido { get; set; }
 
         public ProductosElectrónicos() { }
-        public ProductosElectrónicos(int Id, string Nombre, int Unidades, double PrecioUnitario, string Descripción, string TipoMaterialesUtilizdos) : base(Id, Nombre, Unidades, PrecioUnitario, Descripción)
+        public ProductosElectrónicos(int Id, string Nombre, int Unidades, double PrecioUnitario, string Descripción, string TipoMaterialesUtilizdos, bool InclusiónPilas, bool Precargado) : base(Id, Nombre, Unidades, PrecioUnitario, Descripción)
         {
             this.TipoMaterialesUtilizados = TipoMaterialesUtilizdos;
-            this.InclusiónPilas = false;
-            this.Precargado = false;
-            this.ArgumentoNoValido = false;
+            this.InclusiónPilas = InclusiónPilas;
+            this.Precargado = Precargado;
         }
         public ProductosElectrónicos(int Id) : base(Id) { }
 
@@ -27,7 +26,7 @@ namespace MáquinaDeVending
         {
             base.MostrarInfoCompleta();
             Console.Write("\n\tTipo de producto: Producto Electrónico" + "\n\tTipo de materiales utilizados: " + this.TipoMaterialesUtilizados);
-            if (this.InclusiónPilas == false)
+            if (this.InclusiónPilas != true)
             {
                 Console.Write("\n\tIncluye pilas: No");
             }
@@ -35,7 +34,7 @@ namespace MáquinaDeVending
             {
                 Console.Write("\n\tIncluye pilas: Si");
             }
-            if (this.Precargado == false)
+            if (this.Precargado != true)
             {
                 Console.WriteLine("\n\tProducto precargado: No");
             }
@@ -73,7 +72,6 @@ namespace MáquinaDeVending
                         Console.WriteLine("---Debe introducir un argumento válido(si/no)---\n");
                         break;
                 }
-
             }
             catch (FormatException)
             {
