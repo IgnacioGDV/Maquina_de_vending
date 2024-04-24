@@ -524,7 +524,6 @@ namespace MáquinaDeVending
                                         break;
                                     default:
                                         Console.WriteLine("Opción no válida\nVolviendo al menú principal...");
-                                        Console.ReadKey();
                                         break;
                                 }
                             }
