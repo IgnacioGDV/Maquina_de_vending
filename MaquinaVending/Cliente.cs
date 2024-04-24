@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MáquinaDeVending
 {
-    public class Cliente : Usuario
+    public class Cliente : Usuario // Hereda de la clase Usuario
     {
         public Cliente(List<Producto> productos) : base(productos)
         {
