@@ -18,6 +18,10 @@ namespace MáquinaDeVending
             int opcion = 0;
             do
             {
+                Console.Clear();
+                Console.WriteLine("  ------------------- ");
+                Console.WriteLine(" |   ADMINISTRADOR   | ");
+                Console.WriteLine("  ------------------- ");
                 base.Menu();
                 Console.WriteLine("3. Carga individual de productos(Admin)");
                 Console.WriteLine("4. Carga completa de productos(Admin)");
