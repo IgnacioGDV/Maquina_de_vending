@@ -14,17 +14,17 @@ namespace MáquinaDeVending
         {
             this.ListaProductos = productos;
         }
-        public double CalcularVuelta(double saldoIntroducido, double saldoaIntroducir, double cambio)
+        public double CalcularVuelta(double saldoIntroducido, double saldoaIntroducir, double cambio) // Método para calcular la vuelta al pagar en efectivo
         {
             if (saldoaIntroducir > saldoIntroducido)
             {
                 saldoaIntroducir = saldoaIntroducir - saldoIntroducido;
-                return saldoaIntroducir;
+                return Math.Round(saldoaIntroducir, 2);
             }
             else
             {
                 cambio = saldoIntroducido - saldoaIntroducir;
-                return cambio;
+                return Math.Round(cambio,2);
             }
         }
         public void ComprarProductos()
@@ -41,7 +41,7 @@ namespace MáquinaDeVending
                     int idProducto = int.Parse(Console.ReadLine());
                     Producto productoTemp = BuscarProducto(idProducto);
                     MostrarInfoProducto(productoTemp);
-                    if (productoTemp != null && productoTemp.Unidades > 0)
+                    if (productoTemp != null && productoTemp.Unidades > 0) //Si el producto existe y tiene existencias
                     {
                         Console.WriteLine("\nSeleccione la forma de pago:");
                         Console.WriteLine("1. Pago en efectivo");
@@ -54,9 +54,9 @@ namespace MáquinaDeVending
                         {
                             case 1:
                                 double opSaldoIntroducido;
-                                double saldoIntroducido = 0;
+                                double saldoIntroducido = 0; //inicializo variables para calcular la vuelta
                                 double cambio = 0;
-                                double saldoaIntroducir = productoTemp.PrecioUnitario;
+                                double saldoaIntroducir = productoTemp.PrecioUnitario; // el saldo a introducir será el precio del producto
                                 do
                                 {
                                     Console.Clear();
@@ -76,9 +76,9 @@ namespace MáquinaDeVending
                                     try
                                     {
                                         opSaldoIntroducido = int.Parse(Console.ReadLine());
-                                        switch (opSaldoIntroducido)
+                                        switch (opSaldoIntroducido) // Calculo la vuelta para cada billete/moneda introducido
                                         {
-                                            case 1:
+                                            case 1:  // Pago con efectivo
                                                 if (saldoaIntroducir > 10)
                                                 {
                                                     saldoaIntroducir = CalcularVuelta(10, saldoaIntroducir, cambio);
@@ -294,30 +294,30 @@ namespace MáquinaDeVending
                                     }
                                 } while (saldoaIntroducir <= saldoIntroducido || salir2 != true);
                                 break;
-                            case 2:
+                            case 2: // Pago con tarjeta
                                 Tarjeta tarjeta = new Tarjeta();
                                 Console.WriteLine("Introduzca los datos de la tarjeta:");
                                 Console.Write("Número de tarjeta (16 dígitos): ");
                                 tarjeta.Número = Console.ReadLine().Replace(" ", "");
-                                if (tarjeta.Número.Length != 16)
+                                if (tarjeta.Número.Length != 16) //Controlar que la tarjeta tenga 16 dígitos
                                 {
                                     tarjeta.ArgumentoNoValido = true;
                                     Console.WriteLine("---No has introducido 16 dígitos--- ");
                                 }
                                 Console.Write("Fecha de caducidad (MM/YY): ");
                                 tarjeta.FechaCaducidad = Console.ReadLine();
-                                string[] partesFecha = tarjeta.FechaCaducidad.Split('/');
+                                string[] partesFecha = tarjeta.FechaCaducidad.Split('/'); //Dividir en mes y año la fecha de caducidad
                                 if (partesFecha.Length == 2)
                                 {
                                     int mes = int.Parse(partesFecha[0]);
                                     int año = int.Parse(partesFecha[1]);
                                 
-                                    if (mes < 1 || mes > 12)
+                                    if (mes < 1 || mes > 12) // Controlar que el mes sea válido
                                     {
                                         tarjeta.ArgumentoNoValido = true;
                                         Console.WriteLine("--- Mes introducido inválido ---");
                                     }
-                                    if (año < 24 || año > 99)
+                                    if (año < 24 || año > 99) // Controlar que el año sea válido
                                     {
                                         tarjeta.ArgumentoNoValido = true;
                                         Console.WriteLine("--- Año introducido inválido ---");
@@ -331,7 +331,7 @@ namespace MáquinaDeVending
                                 Console.Write("Código de seguridad: ");
                                 tarjeta.CódigoSeguridad = Console.ReadLine();
                                 Console.WriteLine("Procesando pago con tarjeta...");
-                                if (tarjeta.ArgumentoNoValido != true)
+                                if (tarjeta.ArgumentoNoValido != true) // Validar que todos los argumentos sean correctos
                                 {
                                     productoTemp.Unidades = productoTemp.Unidades - 1;
                                     Console.WriteLine("--- Producto comprado correctamente ---");
@@ -356,7 +356,7 @@ namespace MáquinaDeVending
                             Console.Clear();
                             Console.WriteLine("¿Desea comprar otro producto? (si/no): ");
                             string opcion = Console.ReadLine().ToLower();
-                            switch (opcion)
+                            switch (opcion) //opción de comprar otro producto
                             {
                                 case "no":
                                     salir = true;
@@ -376,7 +376,7 @@ namespace MáquinaDeVending
                     {
                         Console.WriteLine();
                         Console.WriteLine("El producto que ha intentado comprar no dispone de existencias o no existe");
-                        Console.WriteLine("¿Desea salir? (si/no): ");
+                        Console.WriteLine("¿Desea salir? (si/no): "); //Opción de salir
                         string opcionsalir = Console.ReadLine().ToLower();
                         switch (opcionsalir)
                         {
@@ -411,7 +411,7 @@ namespace MáquinaDeVending
                 }
             } while (salir != true);
         }
-        public void MostrarInfoProductos()
+        public void MostrarInfoProductos() //Muestra la información de todos los productos en la lista de productos
         {
             Console.Clear();
             Console.WriteLine(" --- PRODUCTOS --- ");
@@ -421,7 +421,7 @@ namespace MáquinaDeVending
                 producto.MostrarInfo();
             }
         }
-        public void MostrarInfoProducto(Producto producto)
+        public void MostrarInfoProducto(Producto producto) //Muestra la información completa de un producto
         {
             if (producto != null)
             {
@@ -435,7 +435,7 @@ namespace MáquinaDeVending
                 Console.WriteLine("\n---No se ha encontrado ningún producto con el ID introducido---");
             }
         }
-        public Producto BuscarProducto(int Id)
+        public Producto BuscarProducto(int Id) //Busca un producto a partir de su ID
         {
             Producto productoTemp = null;
             foreach (Producto producto in ListaProductos)
@@ -447,7 +447,7 @@ namespace MáquinaDeVending
             }
             return productoTemp;
         }
-        public void CargaIndividualProductos()
+        public void CargaIndividualProductos() //Método para cargar productos individualmente
         {
             int opcion;
             Console.Clear();
@@ -468,7 +468,7 @@ namespace MáquinaDeVending
                         {
                             Console.Write("Número de existencias a añadir: ");
                             int existencias = int.Parse(Console.ReadLine());
-                            productoTemp.Unidades = productoTemp.Unidades + existencias;
+                            productoTemp.Unidades = productoTemp.Unidades + existencias; //Añade las existencias
                             Console.WriteLine("--- Existencias añadidas con éxito ---");
                         }
                         else
@@ -486,10 +486,10 @@ namespace MáquinaDeVending
                         Console.Write("Elige una opción: ");
                         try
                         {
-                            if (ListaProductos.Count < 12)
+                            if (ListaProductos.Count < 12) //Controlamos que la lista de productos ya tenga 12 slots
                             {
                                 opcionProd = int.Parse(Console.ReadLine());
-                                switch (opcionProd)
+                                switch (opcionProd) // Opción para añadir el tipo de producto elegido
                                 {
                                     case 1:
                                         MaterialesPreciosos matPrecioso = new MaterialesPreciosos(ListaProductos.Count);
@@ -508,7 +508,7 @@ namespace MáquinaDeVending
                                     case 3:
                                         ProductosElectrónicos prodElectrónico = new ProductosElectrónicos(ListaProductos.Count);
                                         prodElectrónico.SolicitarInfo();
-                                        if (prodElectrónico.ArgumentoNoValido == false)
+                                        if (prodElectrónico.ArgumentoNoValido == false) //Controlamos que todos los argumentos introducidos al solicitar información sean correctos
                                         {
                                             ListaProductos.Add(prodElectrónico);
                                             prodElectrónico.MostrarInfoCompleta();
@@ -557,38 +557,38 @@ namespace MáquinaDeVending
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
-        public void CargaCompletaProductos()
+        public void CargaCompletaProductos() //Método para cargar productos de un archivo
         {
             Console.Write("Introduzca el nombre (con extensión) del fichero de productos a leer: ");
             string fichero = Console.ReadLine();
             try
             {
-                if (File.Exists(fichero))
+                if (File.Exists(fichero)) //Si el fichero introducido existe
                 {
-                    StreamReader sr = new StreamReader(fichero);
+                    StreamReader sr = new StreamReader(fichero); //Instanciamos un StreamReader del fichero
                     string linea;
-                    while ((linea = sr.ReadLine()) != null)
+                    while ((linea = sr.ReadLine()) != null) //Leemos línea por linea mientras que sea distinto de null 
                     {
-                        string[] datos = linea.Split(';');
-                        if (ListaProductos.Count < 12)
+                        string[] datos = linea.Split(';'); //Separamos la línea leída en datos
+                        if (ListaProductos.Count < 12) //Controlamos que la lista de productos ya tenga 12 slots
                         {
-                            if (datos[0] == "1")
+                            if (datos[0] == "1") // Si es material precioso el primer dato del archivo es 1
                             {
                                 MaterialesPreciosos matPrecioso = new MaterialesPreciosos(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")),2), datos[4], datos[5], double.Parse(datos[6].Replace("g", "")));
-                                ListaProductos.Add(matPrecioso);
+                                ListaProductos.Add(matPrecioso); //Añadimos el material precioso con los datos correspondientes del fichero
                                 Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
                             }
-                            if (datos[0] == "2")
+                            if (datos[0] == "2") // Si es producto alimenticio el primer dato del archivo es 2
                             {
                                 ProductosAlimenticios prodAlimenticio = new ProductosAlimenticios(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")), 2), datos[4], datos[7]);
-                                ListaProductos.Add(prodAlimenticio);
+                                ListaProductos.Add(prodAlimenticio); //Añadimos el producto alimenticio con los datos correspondientes del fichero
                                 Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
                             }
-                            if (datos[0] == "3")
+                            if (datos[0] == "3") // Si es producto electrónico el primer dato del archivo es 3
                             {
                                 bool InclusiónPilas;
                                 bool Precargado;
-                                if (datos[8] == "1")
+                                if (datos[8] == "1")  //Asignamos si tienen pilas o no 
                                 {
                                     InclusiónPilas = true;
                                 }
@@ -596,7 +596,7 @@ namespace MáquinaDeVending
                                 {
                                     InclusiónPilas = false;
                                 }
-                                if (datos[9] == "1")
+                                if (datos[9] == "1") //Asignamos si viene percargado o no 
                                 {
                                     Precargado = true;
                                 }
@@ -605,7 +605,7 @@ namespace MáquinaDeVending
                                     Precargado = false;
                                 }
                                 ProductosElectrónicos prodElectrónico = new ProductosElectrónicos(ListaProductos.Count, datos[1], int.Parse(datos[2]), Math.Round(float.Parse(datos[3].Replace(".", ",")), 2), datos[4], datos[6], InclusiónPilas, Precargado);
-                                if (datos[8] != "0" && datos[8] != "1")
+                                if (datos[8] != "0" && datos[8] != "1") //Controlamos que InclusiónPilas y Precargado sean argumentos 0/1
                                 {
                                     prodElectrónico.ArgumentoNoValido = true;
                                 }
@@ -615,7 +615,7 @@ namespace MáquinaDeVending
                                 }
                                 if (prodElectrónico.ArgumentoNoValido != true)
                                 {
-                                    ListaProductos.Add(prodElectrónico);
+                                    ListaProductos.Add(prodElectrónico); //Añadimos el producto electrónico con los datos correspondientes del fichero
                                     Console.WriteLine("Añadido correctamente el producto con nombre: " + datos[1] + " del archivo de productos: " + fichero);
                                 }
                                 else
