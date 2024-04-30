@@ -547,7 +547,7 @@ namespace MáquinaDeVending
                         break;
                     case 3:
                         MostrarInfoProductos();
-                        Console.Write("ID del producto al cual quieres añadir existencias: ");
+                        Console.Write("ID del producto al cual quieres reducir existencias a 0: ");
                         int idProducto2 = int.Parse(Console.ReadLine());
                         Producto productoTemp2 = BuscarProducto(idProducto2);
                         if (productoTemp2 != null)
