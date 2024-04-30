@@ -453,6 +453,8 @@ namespace MáquinaDeVending
             Console.Clear();
             Console.WriteLine("1. Añadir existencias a un producto existente");
             Console.WriteLine("2. Añadir un nuevo tipo de producto en las ranuras disponibles");
+            Console.WriteLine("3. Reducir a 0 el número de unidades disponibles de un producto existente");
+            Console.WriteLine("4. Salir");
             Console.Write("Elige una opción: ");
             try
             {
@@ -542,6 +544,24 @@ namespace MáquinaDeVending
                         {
                             Console.WriteLine("Error: " + ex.Message);
                         }
+                        break;
+                    case 3:
+                        MostrarInfoProductos();
+                        Console.Write("ID del producto al cual quieres añadir existencias: ");
+                        int idProducto2 = int.Parse(Console.ReadLine());
+                        Producto productoTemp2 = BuscarProducto(idProducto2);
+                        if (productoTemp2 != null)
+                        {
+                            productoTemp2.Unidades = 0; 
+                            Console.WriteLine("--- Existencias reducidas a 0 con éxito ---");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n---No se ha encontrado ningún contenido con el ID introducido---");
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Saliendo..., pulse para continuar");
                         break;
                     default:
                         Console.WriteLine("Error: Opción inválida. Por favor, Ingrese un número válido.");
